@@ -26,7 +26,6 @@ library(emmeans) #Estimate Least Square Means
 library(tidyverse)
 library(jtools) # summary, standardize, and plot functions for models
 library(ggstance) #A 'ggplot2' extension that flips components: horizontal versions of 'Stats' and 'Geoms', & vertical versions of 'Positions'
-#library(train) #used for various model building
 
 
 #set working directory
@@ -614,9 +613,7 @@ fviz_famd_var(res.famd,
 
 
 
-### PREDICTIVE MODEL: LOGISTIC REGRESSION#################################################################
-# Reference: https://rpubs.com/aelhabr/logistic-regression-tutorial
-### -------------------------------- ###
+### PREDICTIVE MODEL: LOGISTIC REGRESSION###################################
 
 #Set random seed for reproducing results
 set.seed(2)
@@ -653,8 +650,6 @@ glm_INTERACTIONS$anova
 
 
 ### EVALUATE PREDICTIVE CAPABILITY #################
-# Reference: https://github.com/susanli2016/Data-Analysis-with-R/blob/master/customer_churn.Rmd
-###################################################-
 
 #Run predictions against TRAINING data set & convert probabilities to classifications
 trng_predictions <- ifelse(predict(glm_FULL, type="response") > 0.5, "Yes", "No")
@@ -769,7 +764,6 @@ test_ROC_INTERACTIONS <- roc(clean.test$Churn ~ test_prob_INTERACTIONS, plot=TRU
 
 
 ### LOGISTIC REGRESSION FINAL MODEL SELECTION/COMPARISON ####################
-# Reference: https://cran.r-project.org/web/packages/jtools/vignettes/summ.html#plot_summs_and_plot_coefs
 # Goodness of fit measures: χ², AIC, ROC, Accuracy, Sensitivity, Specificity
 ##########################################################################-
 
